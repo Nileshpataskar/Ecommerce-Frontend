@@ -1,0 +1,95 @@
+/* Home.css */
+
+/* Main section with background gradient */
+.carouselImage{
+  
+}
+.homeMain {
+  background: linear-gradient(
+    120deg,
+    #f0f5f9,
+    #c4e0e5,
+    #87bcc6,
+    #5393a0,
+    #2c6772
+  );
+  padding: 3% 2%;
+  margin: 2% 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/* Carousel image styling */
+.carouselImage {
+  max-width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.3s ease;
+}
+
+.carouselImage:hover {
+  transform: scale(1.05);
+}
+
+/* Custom carousel container */
+.customCarousel {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+/* Carousel navigation buttons */
+.carousel.carousel-slider .control-arrow {
+  font-size: 30px;
+  color: #333;
+  padding: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+  background-color: rgba(78, 78, 78, 0.9);
+  transform: scale(1.1);
+}
+
+/* Video container styling */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.video-container video {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbarMobile{
+  display: none;
+}
+.navbarDesktop{
+  display: none;
+}
+
+
+@media all and (max-width: 480px) { 
+.navbarDesktop{}
+.carouselImage {
+  max-width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.3s ease;
+}
+  
+}

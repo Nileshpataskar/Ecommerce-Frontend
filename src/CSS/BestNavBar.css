@@ -1,0 +1,112 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.navMain {
+  display: flex;
+  justify-content: center;
+}
+
+.bmain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nav1 {
+  text-decoration: none;
+  font-size: large;
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.navTitle {
+  display: flex;
+  flex-direction: row;
+}
+.BestSellerItem {
+  display: flex;
+  flex-direction: row;
+  padding: 50px;
+  gap: 50px;
+  width: auto;
+  margin-left: 170px;
+  flex-wrap: wrap;
+}
+/* Card container */
+.card {
+  width: 290px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product image */
+.card img {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Product title */
+.product-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Product price */
+.product-price {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Add to cart button */
+.add-to-cart {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3;
+}
+
+.loadmore {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.loadmore:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.loadmore:active {
+  background-color: #003d80;
+  transform: translateY(0);
+}

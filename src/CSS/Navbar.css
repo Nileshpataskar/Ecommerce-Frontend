@@ -1,0 +1,136 @@
+/* Navbar.css */
+.main {
+  background-color: #f8f5f5;
+}
+
+.navbar-container {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  right: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.menuButton {
+  fill: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.nav-list-mobile {
+  list-style: none;
+  background-color: #444;
+  opacity: 0.7;
+  position: absolute;
+  top: 60px;
+
+  width: 80%;
+  padding: 10px 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.nav-list-mobile li {
+  text-align: center;
+  font-weight: 500;
+  margin: 22px 0;
+}
+
+.nav-list-mobile li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px 0;
+  display: block;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-list-mobile li a:hover {
+  background-color: #666;
+  border-radius: 5px;
+}
+
+.searchandcart{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.searchInNav{
+  padding: 14px; 
+    margin: 12px 0;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+/* .navbar-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+.CategoriesButton{
+  display: none;
+}
+
+.nav {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.nav-dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+
+@media all and (max-width: 500px) {
+  .mobile{
+    display: none;
+  }
+  .CategoriesButton{
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+  }
+} */
