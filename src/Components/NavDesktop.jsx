@@ -73,7 +73,7 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
                   className="dropdown-item"
                   onClick={() => onSelectBrand("Dell")}
                 >
-                  HP
+                  Dell
                 </Link>
                 {/* <Link
                   to="/store"

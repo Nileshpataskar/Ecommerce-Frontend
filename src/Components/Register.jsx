@@ -75,7 +75,7 @@ function Register() {
     //     console.error("Error registering:", error);
     //   });
     axios
-      .post("http://localhost:7000/api/register", formData)
+      .post("https://ecommerce-backend-b71d.onrender.com/api/register", formData)
       .then((response) => {
         console.log("Registration successful:", response.data);
 

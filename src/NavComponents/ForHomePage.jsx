@@ -6,6 +6,7 @@ import axios from 'axios';
 import "../CSS/Iphone.css"
 
 const ForHomePageData = () => {
+  var randomNumber = Math.floor(Math.random() * 31) + 1;
 
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -30,7 +31,7 @@ const ForHomePageData = () => {
     <div>
       
       <div className="product-container2">
-        {products.slice(6).map((product, index) => (
+        {products.slice(randomNumber,randomNumber+8).map((product, index) => (
           <ProductCard
             key={index+25}
             product={product}

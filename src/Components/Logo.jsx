@@ -50,7 +50,7 @@ function Logo() {
   const handleSearch = () => {
     if (searchQuery) {
       axios
-        .get(`http://localhost:2001/search?keyword=${searchQuery}`)
+        .get(`https://ecommerce-backend-b71d.onrender.com/search?keyword=${searchQuery}`)
         .then((response) => {
           setSearchResults(response.data.products);
         })
@@ -69,7 +69,7 @@ function Logo() {
   useEffect(() => {
     if (isAuthenticated) {
       axios
-        .get(`http://localhost:2001/getDistinctItemCount/${user?.sub}`)
+        .get(`https://ecommerce-backend-b71d.onrender.com/getDistinctItemCount/${user?.sub}`)
         .then((response) => {
           setDistinctItemCount(response.data.count);
         })
@@ -83,7 +83,7 @@ function Logo() {
     // Fetch distinct item count whenever cart changes
     if (isAuthenticated) {
       axios
-        .get(`http://localhost:2001/getDistinctItemCount/${user?.sub}`)
+        .get(`https://ecommerce-backend-b71d.onrender.com/getDistinctItemCount/${user?.sub}`)
         .then((response) => {
           setDistinctItemCount(response.data.count);
         })

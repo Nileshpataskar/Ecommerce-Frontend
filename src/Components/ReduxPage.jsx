@@ -1,7 +1,7 @@
 
 
 // ReduxPage.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../CSS/ReduxPage.css";
 import Logo from "./Logo";
@@ -11,10 +11,25 @@ import { addToCart } from "../Redux/cartAction";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import NavDesktop from "./NavDesktop";
 
 function ReduxPage() {
   const tempData = useSelector((state) => state.tempData);
   console.log(tempData);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const setSize = () => {
+      const isMobile = window.innerWidth < 600;
+      setIsMobile(isMobile);
+    };
+    setSize();
+    window.addEventListener("resize", setSize);
+    return () => {
+      window.removeEventListener("resize", setSize);
+    };
+  }, []);
 
   //importing data for add to cart
   const { isAuthenticated,user } = useAuth0();
@@ -31,7 +46,7 @@ function ReduxPage() {
       console.log("first")
       console.log("user",user)
      try
-     { await axios.post("http://localhost:2001/addtocart", {
+     { await axios.post("https://ecommerce-backend-b71d.onrender.com/addtocart", {
         user_id: user.sub, // User's sub (unique identifier) from Auth0
         ...tempData, // Include other product details
     
@@ -59,10 +74,17 @@ console.log("in error")
   const handleGoBack = () => {
     navigate(-1); // Go back to the previous page
   };
+
+  // const [carouselImages, setCarouselImages] = useState([]);
+
+ 
+
+
+
   return (
-    <>
-      <Logo />
-      <Navbar />
+    <> <Logo />
+      {isMobile ? <Navbar /> : <NavDesktop />}
+
       <div className="redux-page">
         <h1 className="page-title">{tempData.title}</h1>
         <div className="data-container">

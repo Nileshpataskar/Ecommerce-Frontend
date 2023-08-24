@@ -32,17 +32,7 @@ function Home() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   // Fetch images from the API
-  //   axios
-  //     .get("http://localhost:7000/api/apple")
-  //     .then((response) => {
-  //       setCarouselImages(response.data); // Update the state with fetched images
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching images:", error);
-  //     });
-  // }, []);
+
   return (
     <>
       <Logo />
@@ -69,10 +59,7 @@ function Home() {
 <img src={imagesrc3} className="carouselImage" alt="" />
 <img src={imagesrc4} className="carouselImage" alt="" />
 
-          {/* {carouselImages.map((imageSrc, index) => (
-            <div key={index}>
-            </div>
-          ))} */}
+          
            </Carousel>
       </div>
       <ForHomePageData />

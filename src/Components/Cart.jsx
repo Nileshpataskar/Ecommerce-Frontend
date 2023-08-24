@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { removeFromCart } from "../Redux/cartAction";
 import { toast } from "react-toastify";
 import { useAuth0 } from "@auth0/auth0-react";
+import NavDesktop from "./NavDesktop";
 
 function Cart() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -26,7 +27,7 @@ function Cart() {
     try {
       dispatch(removeFromCart(itemId)); // Dispatch the action to remove item from cart
       await axios.delete(
-        `http://localhost:2001/removefromcart/${userId}/${itemId}`
+        `https://ecommerce-backend-b71d.onrender.com/removefromcart/${userId}/${itemId}`
       );
       fetchCartData(); // Fetch updated cart data after removal
     } catch (error) {
@@ -37,7 +38,7 @@ function Cart() {
   const handleIncreaseQuantity = async (itemId) => {
     try {
       await axios.put(
-        `http://localhost:2001/updateCartItemQuantity/${userId}/${itemId}`,
+        `https://ecommerce-backend-b71d.onrender.com/updateCartItemQuantity/${userId}/${itemId}`,
         {
           change: 1, // Increase by 1
         }
@@ -53,7 +54,7 @@ function Cart() {
       const currentItem = cartData.find((item) => item.id === itemId);
       if (currentItem && currentItem.quantity > 1) {
         await axios.put(
-          `http://localhost:2001/updateCartItemQuantity/${userId}/${itemId}`,
+          `https://ecommerce-backend-b71d.onrender.com/updateCartItemQuantity/${userId}/${itemId}`,
           {
             change: -1, // Decrease by 1
           }
@@ -61,7 +62,7 @@ function Cart() {
         fetchCartData(); // Fetch updated cart data after updating quantity
       } else {
         await axios.delete(
-          `http://localhost:2001/removefromcart/${userId}/${itemId}`
+          `https://ecommerce-backend-b71d.onrender.com/removefromcart/${userId}/${itemId}`
         );
         fetchCartData(); // Fetch updated cart data after removal
       }
@@ -73,7 +74,7 @@ function Cart() {
   const fetchCartData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:2001/fetchcartbyuser/${userId}`
+        `https://ecommerce-backend-b71d.onrender.com/fetchcartbyuser/${userId}`
       );
       setCartData(response.data.Result);
     } catch (error) {
@@ -85,7 +86,7 @@ function Cart() {
     try {
       // Remove all items from the cart for the specific user
       // await axios.delete(`http://localhost:2001/checkout/${userId}`
-      await axios.delete(`http://localhost:2001/deleteall`
+      await axios.delete(`https://ecommerce-backend-b71d.onrender.com/deleteall`
       
       );
   
@@ -107,10 +108,26 @@ function Cart() {
     }
   }, [userId, isLoading]);
 
+
+  const [isMobile, setIsMobile] = useState(false);
+  // const [carouselImages, setCarouselImages] = useState([]);
+
+  useEffect(() => {
+    const setSize = () => {
+      const isMobile = window.innerWidth < 600;
+      setIsMobile(isMobile);
+    };
+    setSize();
+    window.addEventListener("resize", setSize);
+    return () => {
+      window.removeEventListener("resize", setSize);
+    };
+  }, []);
+
   return (
     <>
-      <Logo />
-      <Navbar />
+       <Logo />
+      {isMobile ? <Navbar /> : <NavDesktop />}
 
       <div className="cart-container">
         <h2>Cart</h2>

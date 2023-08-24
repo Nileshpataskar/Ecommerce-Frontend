@@ -5,6 +5,8 @@ import { addToCart } from "../Redux/cartAction";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { storeTempData } from "../Redux/tempDataAction";
 
 function ProductCard({ product }) {
 
@@ -14,6 +16,9 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const { isAuthenticated, user } = useAuth0();
+
+  
+  const navigate = useNavigate();
 
   const renderStarRating = (rating) => {
     const fullStars = Math.floor(rating);
@@ -50,7 +55,7 @@ function ProductCard({ product }) {
             hideProgressBar: true,
           });
         } else {
-          await axios.post("http://localhost:2001/addtocart", {
+          await axios.post("https://ecommerce-backend-b71d.onrender.com/addtocart", {
             user_id: user.sub,
             ...product,
           });
@@ -83,9 +88,14 @@ function ProductCard({ product }) {
     }
   };
 
+  const handleStoreDataAndRedirect = () => {
+    dispatch(storeTempData(product)); // Store the data in Redux store
+    navigate("/inforedux"); // Redirect to the "redux" route
+  };
+
   return (
     <div className="product-card">
-      <div onClick={handleAddToCart}>
+      <div onClick={handleStoreDataAndRedirect} product={product}>
         <img src={thumbnail} alt={name} className="product-image" />
         <h2 className="product-title">{title}</h2>
         <h2 className="product-title">{brand}</h2>
