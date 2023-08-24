@@ -1,34 +1,96 @@
+/* Profile.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Common styles for logo and profile */
+.logo-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #0c31a2;
+}
+
+.ishop {
+  font-size: 36px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0c31a2;
+  letter-spacing: 2px;
+}
+
+/* Profile-specific styles */
 .profile-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin: 50px;
+  min-height: 50vh;
+  background-color: #f5f5f5;
 }
 
 .profile-card {
   position: relative;
   background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+ 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 40%;
-  height: 60%;  
+  margin: 30px;
+  width: 50%;
+  height: 50%;
+  max-width: 500px;
+  padding: 40px;
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin: 0 auto 10px;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-name {
   margin: 0;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
   color: #333;
 }
+
 .btn-in-profile {
-  position: absolute;
-  bottom: 2%;
-  left: 40%;
+  display: inline-block;
+  margin-top: 30px;
+  background-color: #0c31a2;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.btn-in-profile:hover {
+  background-color: #101157;
+}
+
+
+@media all and (max-width: 480px) { 
+  .profile-container {
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0px;
+  }
+  h3{
+    font-weight: 400;
+    font-size: 16px;
+  }
 }

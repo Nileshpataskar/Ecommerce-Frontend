@@ -13,7 +13,8 @@ function Store() {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [visibleProductCount, setVisibleProductCount] = useState(12);
   const [selectedCategory, setSelectedCategory] = useState("smartphones"); // Default to 'all'
-  const [selectedBrand, setSelectedBrand] = useState("HP"); // Default to 'all'
+  const [selectedBrand, setSelectedBrand] = useState(""); // Default to 'all'
+  const [totalProducts, setTotalProducts] = useState(0); // Track total number of products
 
   const dispatch = useDispatch();
 
@@ -21,12 +22,10 @@ function Store() {
     let url = "https://ecommerce-backend-b71d.onrender.com/getall";
 
     if (selectedCategory === "all") {
-
       url = `https://ecommerce-backend-b71d.onrender.com/getall`;
     }
 
     if (selectedCategory !== "smartphones") {
-
       url = `https://ecommerce-backend-b71d.onrender.com/getcategory/${selectedCategory}`;
     }
     if (selectedBrand !== "HP") {
@@ -37,16 +36,15 @@ function Store() {
     axios
       .get(url)
       .then((response) => {
-        console.log("response", response.data.Result
-        );
+        console.log("response", response.data.Result);
         setDisplayedProducts(
           response.data.Result.slice(0, visibleProductCount)
         );
+        setTotalProducts(response.data.Result.length);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-      
   }, [visibleProductCount, selectedCategory, selectedBrand]);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -78,20 +76,14 @@ function Store() {
     setVisibleProductCount(visibleProductCount + 8);
   };
 
-  // const handleCategoryClick = (category) => {
-  //   setSelectedCategory(category);
-  // };
-  // const handleBrandClick = (brand) => {
-  //   setSelectedBrand(brand);
-  // };
+
 
   return (
     <div>
       <Logo />
-
       {isMobile ? (
-        <Navbar 
-        onSelectCategory={setSelectedCategory}
+        <Navbar
+          onSelectCategory={setSelectedCategory}
           onSelectBrand={setSelectedBrand}
         />
       ) : (
@@ -100,7 +92,6 @@ function Store() {
           onSelectBrand={setSelectedBrand}
         />
       )}
-
       <div className="product-container">
         {displayedProducts.map((product, index) => (
           <ProductCard
@@ -111,7 +102,9 @@ function Store() {
           />
         ))}
       </div>
-      <button onClick={handleLoadMore}>Load More</button>
+      {visibleProductCount < totalProducts && (
+        <button onClick={handleLoadMore}>Load More</button>
+      )}{" "}
     </div>
   );
 }

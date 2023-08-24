@@ -10,9 +10,10 @@ import imagesrc from "../Images/2_corousel.png";
 
 import Logo from "../Components/Logo";
 import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+// import Footer from "../Components/Footer";
 import ForHomePageData from "./ForHomePage";
 import NavDesktop from "../Components/NavDesktop";
+import Footer2 from "../Components/Footer2";
 // import axios from "axios";
 
 function Home() {
@@ -75,7 +76,7 @@ function Home() {
            </Carousel>
       </div>
       <ForHomePageData />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

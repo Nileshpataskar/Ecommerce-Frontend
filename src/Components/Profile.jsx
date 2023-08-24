@@ -20,7 +20,10 @@ const Profile = () => {
               alt={user.birthdate}
             />
           )}
-          {isAuthenticated && <h2 className="profile-name">{user.name}</h2>}
+          {isAuthenticated && <h2 className="profile-name">{user.name}</h2> }
+          {isAuthenticated && <h3 className="">{user.email}</h3>}
+
+
 
           {isAuthenticated ? (
             <button

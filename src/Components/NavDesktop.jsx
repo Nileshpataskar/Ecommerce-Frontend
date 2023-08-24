@@ -17,19 +17,17 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
         <Link to="/" className="nav">
           Home
         </Link>
-        <Link
-          to="/all"
-          className="nav"
-        >
+        <Link to="/all" className="nav">
           All
         </Link>
-        <Link to="/store" className="nav">
+        <Link to="/all" className="nav">
           <div
             className="nav dropdown"
             onMouseEnter={handleDropdownOpen}
             onMouseLeave={handleDropdownClose}
+            
           >
-            <span>Store</span>
+            <span>Technology</span>
             {isDropdownOpen && (
               <div className="dropdown-menu">
                 <Link
@@ -61,11 +59,7 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
           Smartphone 
         </Link> */}
 
-        <Link
-          to="/store"
-          className="nav"
-          onClick={() => onSelectCategory("laptop")}
-        >
+        <Link to="/laptop" className="nav">
           <div
             className="nav dropdown"
             onMouseEnter={handleDropdownOpen}
@@ -77,17 +71,17 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
                 <Link
                   to="/store"
                   className="dropdown-item"
-                  onClick={() => onSelectBrand("HP")}
+                  onClick={() => onSelectBrand("Dell")}
                 >
                   HP
                 </Link>
-                <Link
+                {/* <Link
                   to="/store"
                   className="dropdown-item"
-                  onClick={() => onSelectBrand("Dell")}
+                  onClick={() => onSelectBrand("Apple")}
                 >
                   Dell
-                </Link>
+                </Link> */}
                 <Link
                   to="/store"
                   className="dropdown-item"
@@ -100,11 +94,7 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
           </div>
         </Link>
 
-        <Link
-          to="/store"
-          className="nav"
-          onClick={() => onSelectCategory("watch")}
-        >
+        <Link to="/accesories" className="nav">
           <div
             className="nav dropdown"
             onMouseEnter={handleDropdownOpen}
@@ -139,9 +129,6 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
           </div>
         </Link>
 
-        {/* <Link to="/accesories" className="nav">
-          Accesories
-        </Link> */}
       </div>
     </div>
   );

@@ -1,25 +1,25 @@
 /* Logo.css */
-.logo-div {
+.logo-div2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 80px;
-  color: #ff6f61;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
+  padding: 20px 80px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #0c31a2;}
 
 .ishop {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   text-decoration: none;
-  color: #ff6f61;
+  color: #0c31a2;
   letter-spacing: 2px;
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .searchDiv {
@@ -31,15 +31,15 @@ input {
   padding: 10px;
   border: none;
   border-radius: 25px;
-  background-color: #151414;
-  color: #212020;
-  width: 200px;
+  background-color: #f4f4f4;
+  color: #333;
+  width: 220px;
   font-size: 14px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 input::placeholder {
-  color: #343232;
+  color: #8e8e8e;
 }
 
 input:focus {
@@ -49,9 +49,9 @@ input:focus {
 .iconBlack {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 15px;
   transform: translateY(-50%);
-  color: #444;
+  color: #777;
 }
 
 .iconLogo {
@@ -67,8 +67,7 @@ input:focus {
 }
 
 .iconLogoName {
-  font-size: 24px;
-  width:250px;
+  font-size: 20px;
   color: #0c31a2;
   transition: color 0.3s;
 }
@@ -120,8 +119,8 @@ input:focus {
 .btn {
   border: none;
   background-color: #0c31a2;
-  color: #eee9e9;
-  padding: 8px 15px;
+  color: #fff;
+  padding: 10px 20px;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 500;
@@ -130,36 +129,42 @@ input:focus {
 }
 
 .btn:hover {
-  background-color: #190c4e;
+  background-color: #101157;
 }
 
 .cart-count {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: bold;
   color: #0c31a2;
-  margin-right: 10px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Add mobile styles */
 @media all and (max-width: 500px) {
-  .logo-div {
-    padding: 15px 10px;
+  .logo-div2 {
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #0c31a2;
   }
   .ishop {
-    font-size: 22px;
+    font-size: 24px;
     letter-spacing: 2px;
   }
-  .input {
-    display: none;
+  input {
+    width: 160px;
   }
   .btn {
-    background-color: #0c31a2;
-    color: #ffffff;
-    border-radius: 10px;
     padding: 8px 15px;
-  }
-  .icon {
-    display: none;
   }
   .iconLogoName {
     display: none;
@@ -170,16 +175,18 @@ input:focus {
   .right {
     display: flex;
     align-items: center;
+    gap: 10px; /* Adjust gap for mobile view */
   }
-  .search{display: none ;}
-.user2{
-  display: none;
+  .search {
+    display: none;
+  }
+  .user2 {
+    display: none;
+  }
+  .iconLogo {
+    display: none;
+  }
+  .cart-count {
+    display: none;
+  }
 }
-.iconLogo{
-  display: none;
-}
-.cart-count{
-  display: none;
-}
-}
-

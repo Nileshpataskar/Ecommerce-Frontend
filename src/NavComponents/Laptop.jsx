@@ -7,7 +7,7 @@ import ProductCard from "../Components/ProductCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-const All = () => {
+const Laptop = () => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [visibleProductCount, setVisibleProductCount] = useState(12);
   const [selectedCategory, setSelectedCategory] = useState("smartphones"); // Default to 'all'
@@ -17,7 +17,7 @@ const All = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let url = "https://ecommerce-backend-b71d.onrender.com/getall";
+    let url = "https://ecommerce-backend-b71d.onrender.com/getcategory/laptop";
 
 
     axios
@@ -94,7 +94,7 @@ const All = () => {
   );
 };
 
-export default All;
+export default Laptop;
 
 // import React, { useEffect, useState } from 'react'
 // import ProductCard from '../Components/ProductCard';

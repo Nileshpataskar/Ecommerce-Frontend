@@ -10,13 +10,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { addToCart } from "../Redux/cartAction";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function ReduxPage() {
   const tempData = useSelector((state) => state.tempData);
   console.log(tempData);
 
   //importing data for add to cart
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated,user } = useAuth0();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -25,17 +26,28 @@ function ReduxPage() {
     return <div>Please Refresh</div>;
   }
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async() => {
     if (isAuthenticated) {
+      console.log("first")
+      console.log("user",user)
+     try
+     { await axios.post("http://localhost:2001/addtocart", {
+        user_id: user.sub, // User's sub (unique identifier) from Auth0
+        ...tempData, // Include other product details
+    
+      });
       dispatch(addToCart(tempData));
       toast.success("Added to cart", {
         position: "top-center",
         autoClose: 200,
         theme: "dark",
         hideProgressBar: "true",
-      });
+      });}
+      catch(e){
+console.log("in error")
+      }
     } else {
-      toast.error("Please log in to add to cart", {
+        toast.error("Please log in to add to cart", {
         position: "top-center",
         autoClose: 300,
         theme: "dark",
@@ -75,7 +87,7 @@ function ReduxPage() {
               <span className="data-label">Price:</span> {tempData.price} ₹
             </div>
             <div className="data-row">
-              <span className="data-label">Discount:</span>{" "}
+              <span className="data-label">Discount:</span>
               {tempData.discountPercentage}% off
             </div>
             <div className="data-row description">

@@ -33,24 +33,25 @@ const cartReducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
 
-      case "INCREASE_QUANTITY":
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item) =>
-            item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item
-          ),
-        };
-      
-      case "DECREASE_QUANTITY":
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item) =>
-            item.id === action.payload && item.quantity > 1
-              ? { ...item, quantity: item.quantity - 1 }
-              : item
-          ),
-        };
-      
+    case "INCREASE_QUANTITY":
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        ),
+      };
+
+    case "DECREASE_QUANTITY":
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        ),
+      };
 
     default:
       return state;

@@ -3,7 +3,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./NavComponents/Home.jsx";
 import Store from "./NavComponents/Store";
-import Ipad from "./NavComponents/Ipad";
 import Mackbook from "./NavComponents/Mackbook";
 import Accesories from "./NavComponents/Accesories";
 import Login from "./Components/Login";
@@ -15,6 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ProductDetails from "./Components/ProductDetails";
 import ReduxPage from "./Components/ReduxPage";
 import All from "./NavComponents/All";
+import Footer2 from "./Components/Footer2";
+import Laptop from "./NavComponents/Laptop";
 function App() {
   return (
     <div>
@@ -22,9 +23,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />} />
         <Route path="/all" element={<All />} />
-        <Route path="/ipad" element={<Ipad />} />
+        <Route path="/accesories" element={<Accesories/>} />
+
+        <Route path="/laptop" element={<Laptop />} />
         <Route path="/macbook" element={<Mackbook />} />
-        <Route path="/accesories" element={<Accesories />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
@@ -33,6 +35,7 @@ function App() {
         <Route path="/inforedux" element={<ReduxPage />} />
     
       </Routes>
+      <Footer2/>
       <ToastContainer />
     </div>
   );
