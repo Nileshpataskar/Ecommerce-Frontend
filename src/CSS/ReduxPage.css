@@ -85,6 +85,17 @@
   background-color: #140d4b;
   transform: scale(1.05);
 }
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+  .data-container{
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 25px;
+  }
+
+
+
+}
 @media all and (max-width: 480px) { 
 .redux-page{
   padding: 10px 20px;

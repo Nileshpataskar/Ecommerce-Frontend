@@ -92,6 +92,18 @@
 .remove-from-cart:hover {
   background-color: #953f3f;
 }
+@media all and (min-width: 480px) and (max-width: 768px) { 
+  .cart-item{
+   
+    flex-direction: column;
+  }
+  
+  .cart-image{
+    width: 250px;
+    height: 250px;
+  }
+
+}
 
 @media all and (max-width: 480px) { 
 .cart-item{

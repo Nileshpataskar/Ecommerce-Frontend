@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 80px;
+  padding: 20px 3%;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #0c31a2;}
@@ -143,6 +143,41 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+  .logo-div2 {
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #0c31a2;
+  }
+  .ishop {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+  .user2{display: none;}
+  input {
+    width: 120px;
+  }
+  
+  
+  .iconLogoName {
+    display: none;
+  }
+  .iconBlack {
+    display: none;
+  }
+  .btn {
+    padding: 8px 15px;
+  }
+  .searchDiv{
+    display: none;
+  }
 }
 
 /* Add mobile styles */

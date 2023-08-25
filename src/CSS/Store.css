@@ -23,3 +23,9 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+@media all and (min-width: 480px) and (max-width: 768px) { 
+  .product-container{
+    justify-content: center;
+  }
+}

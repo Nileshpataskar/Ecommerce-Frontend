@@ -12,6 +12,7 @@ function Logo() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [distinctItemCount, setDistinctItemCount] = useState(0);
+  const [isRegistered, setIsRegistered] = useState(false); // Add this state
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const toggleUserMenu = () => {
@@ -38,13 +39,16 @@ function Logo() {
         "https://ecommerce-backend-b71d.onrender.com/register",
         registrationData
       );
+      setIsRegistered(true); // Set registration status to true
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
   const onLoginSuccess = () => {
-    handleRegistration();
+    if (!isRegistered) {
+      handleRegistration();
+    }
   };
 
   const handleSearch = () => {
@@ -92,6 +96,7 @@ function Logo() {
         });
     }
   }, [cartVisible, isAuthenticated, user?.sub]);
+
   return (
     <div className="logo-div2">
       <Link to="/" className="ishop">

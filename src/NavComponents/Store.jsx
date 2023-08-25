@@ -13,7 +13,7 @@ function Store() {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [visibleProductCount, setVisibleProductCount] = useState(12);
   const [selectedCategory, setSelectedCategory] = useState("smartphones"); // Default to 'all'
-  const [selectedBrand, setSelectedBrand] = useState(""); // Default to 'all'
+  const [selectedBrand, setSelectedBrand] = useState("HP"); // Default to 'all'
   const [totalProducts, setTotalProducts] = useState(0); // Track total number of products
 
   const dispatch = useDispatch();
