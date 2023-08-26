@@ -11,11 +11,11 @@ import Profile from "./Components/Profile";
 import Cart from "./Components/Cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProductDetails from "./Components/ProductDetails";
 import ReduxPage from "./Components/ReduxPage";
 import All from "./NavComponents/All";
 import Footer2 from "./Components/Footer2";
 import Laptop from "./NavComponents/Laptop";
+import Book from "./NavComponents/Book";
 function App() {
   return (
     <div>
@@ -24,6 +24,7 @@ function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/all" element={<All />} />
         <Route path="/accesories" element={<Accesories/>} />
+        <Route path="/book" element={<Book/>} />
 
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/macbook" element={<Mackbook />} />
@@ -31,7 +32,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/products" component={ProductDetails} />
         <Route path="/inforedux" element={<ReduxPage />} />
     
       </Routes>

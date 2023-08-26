@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../CSS/Cart.css";
-import Logo from "./Logo";
+import Logo, { fetchDistinctItemCount } from "./Logo";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,7 @@ function Cart() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const userId = isAuthenticated ? user.sub : null;
   const [cartData, setCartData] = useState([]);
+  const [removedItem,setRemovedItem] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -30,6 +31,8 @@ function Cart() {
         `https://ecommerce-backend-b71d.onrender.com/removefromcart/${userId}/${itemId}`
       );
       fetchCartData(); // Fetch updated cart data after removal
+      fetchDistinctItemCount()
+  setRemovedItem([...removedItem,itemId])
     } catch (error) {
       console.error("Error removing item from cart:", error);
     }
@@ -71,7 +74,8 @@ function Cart() {
     }
   };
 
-  const fetchCartData = async () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchCartData = useCallback(async () => {
     try {
       const response = await axios.get(
         `https://ecommerce-backend-b71d.onrender.com/fetchcartbyuser/${userId}`
@@ -80,7 +84,7 @@ function Cart() {
     } catch (error) {
       console.error("Error fetching cart data:", error);
     }
-  };
+  });
 
   const handleCheckout = async () => {
     try {
@@ -106,7 +110,7 @@ function Cart() {
     if (!isLoading) {
       fetchCartData();
     }
-  }, [userId, isLoading]);
+  }, [userId, isLoading, fetchCartData]);
 
 
   const [isMobile, setIsMobile] = useState(false);
@@ -134,7 +138,7 @@ function Cart() {
         {cartData && cartData.length > 0 ? (
           <div>
             {cartData.map((item, index) => (
-              <div key={index} className="cart-item">
+              <div key={index} className={`cart-item ${removedItem.includes(item.id) ?"fade-out":""}`} >
                 <img
                   src={item.thumbnail}
                   alt={item.name}

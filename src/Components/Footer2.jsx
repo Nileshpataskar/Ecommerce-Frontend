@@ -31,6 +31,7 @@ const Footer2 = () => {
             <a
               href="https://www.facebook.com/nilesh.pataskar.1"
               target="_blank"
+              rel="noreferrer"
             >
               <FaFacebookF />
             </a>
@@ -39,12 +40,13 @@ const Footer2 = () => {
             <a
               href="https://www.instagram.com/__nilesh_pataskar__/"
               target="_blank"
+              rel="noreferrer"
             >
               <FaInstagram />
             </a>
           </span>
           <span className="icon">
-            <a href="https://github.com/Nileshpataskar" target="_blank">
+            <a href="https://github.com/Nileshpataskar" target="_blank" rel="noreferrer">
               <FaGithub />
             </a>
           </span>
@@ -52,6 +54,7 @@ const Footer2 = () => {
             <a
               href="https://www.linkedin.com/in/nilesh-pataskar-96a6441b1/"
               target="_blank"
+              rel="noreferrer"
             >
               <FaLinkedin />
             </a>

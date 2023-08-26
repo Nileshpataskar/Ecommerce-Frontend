@@ -25,4 +25,11 @@ export const decreaseQuantity = (productId) => {
     type: 'DECREASE_QUANTITY',
     payload: productId,
   };
+  
+};
+export const updateDistinctItemCount = (count) => {
+  return{
+    type:"UPDATE_DISTINCT_ITEM_COUNT",
+    payload: count,
+  };
 };

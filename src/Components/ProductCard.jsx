@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import "../CSS/ProductCard.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/cartAction";
+import { addToCart, updateDistinctItemCount } from "../Redux/cartAction";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { storeTempData } from "../Redux/tempDataAction";
-
 function ProductCard({ product }) {
-
   const [refresh, setRefresh] = useState(false); // Add this state
-
   const { name, title, thumbnail, price, rating, brand } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const { isAuthenticated, user } = useAuth0();
+  const [distinctItemCount] = useState(0);
+  const [animateCart, setAnimateCart] = useState(false);
 
-  
   const navigate = useNavigate();
 
   const renderStarRating = (rating) => {
@@ -45,7 +43,9 @@ function ProductCard({ product }) {
   const handleAddToCart = async () => {
     if (isAuthenticated) {
       try {
-        const existingCartItem = cartItems.find((item) => item.id === product.id);
+        const existingCartItem = cartItems.find(
+          (item) => item.id === product.id
+        );
 
         if (existingCartItem) {
           toast.info("Item is already in the cart", {
@@ -55,10 +55,16 @@ function ProductCard({ product }) {
             hideProgressBar: true,
           });
         } else {
-          await axios.post("https://ecommerce-backend-b71d.onrender.com/addtocart", {
-            user_id: user.sub,
-            ...product,
-          });
+          await axios.post(
+            "https://ecommerce-backend-b71d.onrender.com/addtocart",
+            {
+              user_id: user.sub,
+              ...product,
+            }
+          );
+
+          // fetchDistinctItemCount(user, isAuthenticated, setDistinctItemCount);
+          dispatch(updateDistinctItemCount(distinctItemCount + 1));
 
           dispatch(addToCart(product));
           toast.success("Added to cart", {
@@ -68,7 +74,8 @@ function ProductCard({ product }) {
             hideProgressBar: true,
           });
           setRefresh(!refresh);
-
+          setAnimateCart(true);
+          setTimeout(() => setAnimateCart(false), 500);
         }
       } catch (error) {
         toast.error("Error adding to cart", {
@@ -103,7 +110,13 @@ function ProductCard({ product }) {
         <div className="product-rating">{renderStarRating(rating)}</div>
         <p className="product-price">Price: {price} ₹</p>
       </div>
-      <button className="add-to-cart" onClick={handleAddToCart}>
+      <button
+        className={`add-to-cart ${animateCart ? "animate-cart" : ""}`}
+        onClick={(e) => {
+          handleAddToCart();
+          e.currentTarget.blur(); // Remove focus to prevent repeated animation
+        }}
+      >
         Add to Cart
       </button>
     </div>

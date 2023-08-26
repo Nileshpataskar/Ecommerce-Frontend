@@ -53,6 +53,12 @@ const cartReducer = (state = initialState, action) => {
         ),
       };
 
+    case "UPDATE_DISTINCT_ITEM_COUNT":
+      return {
+        ...state,
+        distinctItemCount: action.payload,
+      };
+
     default:
       return state;
   }

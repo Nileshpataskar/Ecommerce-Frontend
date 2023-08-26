@@ -6,13 +6,26 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify"; // Import the toast module
 import axios from "axios";
 
+export const fetchDistinctItemCount = (user, isAuthenticated, setDistinctItemCount) => {
+  if (isAuthenticated) {
+    axios
+      .get(`https://ecommerce-backend-b71d.onrender.com/getDistinctItemCount/${user?.sub}`)
+      .then((response) => {
+        setDistinctItemCount(response.data.count);
+      })
+      .catch((error) => {
+        console.error("Error fetching distinct item count:", error);
+      });
+  }
+};
+
 function Logo() {
   const [userMenuVisible, setUserMenuVisible] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [distinctItemCount, setDistinctItemCount] = useState(0);
-  const [isRegistered, setIsRegistered] = useState(false); // Add this state
+  const [isRegistered, setIsRegistered] = useState(false);
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   const toggleUserMenu = () => {
@@ -39,7 +52,7 @@ function Logo() {
         "https://ecommerce-backend-b71d.onrender.com/register",
         registrationData
       );
-      setIsRegistered(true); // Set registration status to true
+      setIsRegistered(true);
     } catch (error) {
       console.error("Error during registration:", error);
     }
@@ -84,18 +97,15 @@ function Logo() {
   }, [isAuthenticated, user?.sub]);
 
   useEffect(() => {
-    // Fetch distinct item count whenever cart changes
-    if (isAuthenticated) {
-      axios
-        .get(`https://ecommerce-backend-b71d.onrender.com/getDistinctItemCount/${user?.sub}`)
-        .then((response) => {
-          setDistinctItemCount(response.data.count);
-        })
-        .catch((error) => {
-          console.error("Error fetching distinct item count:", error);
-        });
-    }
-  }, [cartVisible, isAuthenticated, user?.sub]);
+    const interval = setInterval(() => {
+      fetchDistinctItemCount(user, isAuthenticated, setDistinctItemCount);
+    }, 2000); // 5000 milliseconds = 5 seconds
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isAuthenticated, user, user?.sub]);
+
 
   return (
     <div className="logo-div2">
@@ -124,10 +134,7 @@ function Logo() {
         </div>
 
         <Link to="/cart">
-          <ShoppingCart
-            className="iconLogo"
-            onClick={() => toggleCart()}
-          />
+          <ShoppingCart className="iconLogo" onClick={() => toggleCart()} />
           <div className="cart-count">{distinctItemCount}</div>
         </Link>
         <Link to="/profile" className="link2">
@@ -141,15 +148,11 @@ function Logo() {
           onMouseLeave={toggleUserMenu}
         >
           <Link to="/profile" className="link2">
-            {isAuthenticated && (
-              <p className="iconLogoName">{user.name}</p>
-            )}
+            {isAuthenticated && <p className="iconLogoName">{user.name}</p>}
           </Link>
           {userMenuVisible && (
             <div className="user-menu">
-              <ul>
-                {/* Add user menu items here */}
-              </ul>
+              <ul>{/* Add user menu items here */}</ul>
             </div>
           )}
         </div>
@@ -178,5 +181,4 @@ function Logo() {
     </div>
   );
 }
-
 export default Logo;

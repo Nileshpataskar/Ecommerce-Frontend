@@ -18,16 +18,13 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
           Home
         </Link>
         <Link to="/all" className="nav">
-          All
-        </Link>
-        <Link to="/all" className="nav">
           <div
             className="nav dropdown"
             onMouseEnter={handleDropdownOpen}
             onMouseLeave={handleDropdownClose}
             
           >
-            <span>Technology</span>
+            <span>Store</span>
             {isDropdownOpen && (
               <div className="dropdown-menu">
                 <Link
@@ -55,6 +52,11 @@ const NavDesktop = ({ onSelectCategory, onSelectBrand }) => {
             )}
           </div>
         </Link>
+        
+        <Link to="/book" className="nav">
+          Book
+        </Link>
+        
         {/* <Link to="/store" className="nav"  onClick={() => onSelectCategory("smartphones")}>
           Smartphone 
         </Link> */}
