@@ -34,13 +34,13 @@ function Navbar({ onSelectCategory, onSelectBrand }) {
 
               <li>
                 <Link to="/all" className="nav mobile">
-                  All
+                  Store
                 </Link>
               </li>
               <li>
-                <Link to="/all" className="nav mobile"   onClick={() => onSelectCategory("smartphones")}
+                <Link to="/book" className="nav mobile"   onClick={() => onSelectCategory("smartphones")}
         >
-                  Technology
+                  Book
                 </Link>
               </li>
               <li>
