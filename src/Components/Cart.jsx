@@ -13,7 +13,7 @@ function Cart() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const userId = isAuthenticated ? user.sub : null;
   const [cartData, setCartData] = useState([]);
-  const [removedItem,setRemovedItem] = useState([]);
+  const [removedItem, setRemovedItem] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -31,8 +31,8 @@ function Cart() {
         `https://ecommerce-backend-b71d.onrender.com/removefromcart/${userId}/${itemId}`
       );
       fetchCartData(); // Fetch updated cart data after removal
-      fetchDistinctItemCount()
-  setRemovedItem([...removedItem,itemId])
+      fetchDistinctItemCount();
+      setRemovedItem([...removedItem, itemId]);
     } catch (error) {
       console.error("Error removing item from cart:", error);
     }
@@ -90,13 +90,13 @@ function Cart() {
     try {
       // Remove all items from the cart for the specific user
       // await axios.delete(`http://localhost:2001/checkout/${userId}`
-      await axios.delete(`https://ecommerce-backend-b71d.onrender.com/deleteall`
-      
+      await axios.delete(
+        `https://ecommerce-backend-b71d.onrender.com/deleteall`
       );
-  
+
       // Fetch updated cart data
       fetchCartData();
-  
+
       // Show success toast message
       toast.success("You have checked out successfully!");
     } catch (error) {
@@ -111,7 +111,6 @@ function Cart() {
       fetchCartData();
     }
   }, [userId, isLoading, fetchCartData]);
-
 
   const [isMobile, setIsMobile] = useState(false);
   // const [carouselImages, setCarouselImages] = useState([]);
@@ -130,7 +129,7 @@ function Cart() {
 
   return (
     <>
-       <Logo />
+      <Logo />
       {isMobile ? <Navbar /> : <NavDesktop />}
 
       <div className="cart-container">
@@ -138,7 +137,12 @@ function Cart() {
         {cartData && cartData.length > 0 ? (
           <div>
             {cartData.map((item, index) => (
-              <div key={index} className={`cart-item ${removedItem.includes(item.id) ?"fade-out":""}`} >
+              <div
+                key={index}
+                className={`cart-item ${
+                  removedItem.includes(item.id) ? "fade-out" : ""
+                }`}
+              >
                 <img
                   src={item.thumbnail}
                   alt={item.name}
@@ -182,7 +186,10 @@ function Cart() {
             </div>
           </div>
         ) : (
-          <p>Your cart is empty.</p>
+          <div>
+            <p>Your cart is empty</p>
+           
+          </div>
         )}
       </div>
     </>

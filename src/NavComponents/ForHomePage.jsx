@@ -6,7 +6,7 @@ import axios from 'axios';
 import "../CSS/Iphone.css"
 
 const ForHomePageData = () => {
-  var randomNumber = Math.floor(Math.random() * 55) + 1;
+  var randomNumber = Math.floor(Math.random() * 54) + 1;
 
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
