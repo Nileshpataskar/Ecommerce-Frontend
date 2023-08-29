@@ -111,8 +111,11 @@ function Logo() {
     <div className="logo-div2">
       <Link to="/" className="ishop">
         iSHOP
+
       </Link>
+      
       <div className="right">
+        
         <div className="searchDiv">
           <input
             placeholder="Search Item"
